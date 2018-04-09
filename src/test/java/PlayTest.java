@@ -1,6 +1,6 @@
 import exception.InvalidNumberOfPiecesException;
+import org.junit.Assert;
 import org.junit.Test;
-import utils.IOUtil;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,5 +19,14 @@ public class PlayTest {
         URL input = PlayTest.class.getResource("chess-startup.txt");
         Play play = new Play();
         play.startGame(input);
+        URL out = PlayTest.class.getResource("chess-test.txt");
+        play.getGameState(out);
+
+        URL outCheck = PlayTest.class.getResource("chess-test.txt");
+        Play playOutCheck = new Play();
+        playOutCheck.startGame(outCheck);
+
+        Assert.assertTrue(play.getGameStateString().equals(playOutCheck.getGameStateString()));
+
     }
 }

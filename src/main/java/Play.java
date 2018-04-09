@@ -15,6 +15,10 @@ public class Play {
         chessBoard.initializeChessBoard(inputLines);
     }
 
+    public String getGameStateString() {
+        return chessBoard.getChessBoardState();
+    }
+
     public void getGameState(URL fileUrl) throws IOException, URISyntaxException {
         String output = chessBoard.getChessBoardState();
         IOUtil.writeToTextFile(fileUrl, output);
